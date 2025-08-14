@@ -1,4 +1,4 @@
-package org.serious.dev.exception;
+package org.serious.dev.enums;
 
 public enum RemoteErrorCode {
 
