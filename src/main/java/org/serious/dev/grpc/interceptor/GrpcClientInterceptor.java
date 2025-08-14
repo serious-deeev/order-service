@@ -7,11 +7,10 @@ import io.grpc.ClientInterceptor;
 import io.grpc.ForwardingClientCall;
 import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
-import org.slf4j.MDC;
 
 import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
 import static io.grpc.Metadata.Key;
-import static org.serious.dev.web.filter.RequestIdConstants.REQUEST_ID_KEY;
+import static org.serious.dev.logging.util.RequestContextUtil.getRequestId;
 
 public class GrpcClientInterceptor implements ClientInterceptor {
 
@@ -29,7 +28,7 @@ public class GrpcClientInterceptor implements ClientInterceptor {
 
             @Override
             public void start(Listener<RespT> responseListener, Metadata headers) {
-                String requestId = MDC.get(REQUEST_ID_KEY);
+                String requestId = getRequestId();
                 if (requestId != null) headers.put(X_REQUEST_ID_HEADER, requestId);
                 super.start(responseListener, headers);
             }

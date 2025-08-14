@@ -11,8 +11,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.UUID;
 
-import static org.serious.dev.web.filter.RequestIdConstants.REQUEST_ID_KEY;
-import static org.serious.dev.web.filter.RequestIdConstants.REQUEST_ID_HEADER;
+import static org.serious.dev.enums.RequestIdFields.REQUEST_ID_HEADER;
+import static org.serious.dev.enums.RequestIdFields.REQUEST_ID_KEY;
 
 @Component
 public class RequestIdFilter extends OncePerRequestFilter {
@@ -24,15 +24,16 @@ public class RequestIdFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
         try {
-            String requestId = request.getHeader(REQUEST_ID_HEADER);
+            String requestId = request.getHeader(REQUEST_ID_HEADER.getValue());
+
             if (requestId == null || requestId.isBlank()) {
                 requestId = UUID.randomUUID().toString();
             }
 
-            MDC.put(REQUEST_ID_KEY, requestId);
+            MDC.put(REQUEST_ID_KEY.getValue(), requestId);
             filterChain.doFilter(request, response);
         } finally {
-            MDC.remove(REQUEST_ID_KEY);   // обязательная очистка контекста после обработки запроса
+            MDC.remove(REQUEST_ID_KEY.getValue());   // обязательная очистка контекста после обработки запроса
         }
     }
 }

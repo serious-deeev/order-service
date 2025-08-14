@@ -8,16 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderEventMapper {
 
-    public OrderCreatedEvent toOrderCreatedEvent(Long orderId, Long userId, Long postId) {
+    public OrderCreatedEvent toOrderCreatedEvent(String requestId, Long orderId, Long userId, Long postId) {
         return OrderCreatedEvent.builder()
+                .requestId(requestId)
                 .orderId(orderId)
                 .userId(userId)
                 .postId(postId)
                 .build();
     }
 
-    public OrderFailedEvent toOrderFailedEvent(Long userId, Long postId) {
+    public OrderFailedEvent toOrderFailedEvent(String requestId, Long userId, Long postId) {
         return OrderFailedEvent.builder()
+                .requestId(requestId)
                 .userId(userId)
                 .postId(postId)
                 .build();

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaLogger {
 
-    public void logEventSendAttempt(String requestId, OrderEvent orderEvent, String orderTopic, String eventKey) {
+    public void logEventSendAttempt(String requestId, String orderTopic, OrderEvent orderEvent, String eventKey) {
         log.info(
                 "[{}] попытка отправки сообщения в kafka: topic={}, key={}, type={}, payload={}",
                 requestId,

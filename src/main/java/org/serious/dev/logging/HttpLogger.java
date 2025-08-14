@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class OrderRequestLogger {
+public class HttpLogger {
 
     public void logHttpRequest(String requestId, OrderRequestDto requestDto) {
         log.info(
@@ -25,6 +25,20 @@ public class OrderRequestLogger {
                     requestId,
                     responseEntity.getStatusCode()
             );
+        } else {
+            log.warn(
+                    "[{}] получен неожиданный тип ответа для логирования: {}",
+                    requestId,
+                    result.getClass().getSimpleName());
         }
+    }
+
+    public void logError(String requestId, String errorMessage, Exception e) {
+        log.error(
+                "[{}] в процессе обработки запроса возникла ошибка: {}",
+                requestId,
+                errorMessage,
+                e
+        );
     }
 }

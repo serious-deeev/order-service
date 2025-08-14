@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 @RequiredArgsConstructor
 public abstract class OrderEvent {
 
+    private final String requestId;
     private final Long userId;
     private final Long postId;
 }

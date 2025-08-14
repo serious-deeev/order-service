@@ -1,7 +1,7 @@
 package org.serious.dev.mapper;
 
 import org.serious.dev.entity.Order;
-import org.serious.dev.entity.OrderStatus;
+import org.serious.dev.enums.OrderStatus;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -9,7 +9,7 @@ import org.serious.dev.service.OrderService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.serious.dev.entity.OrderStatus.CREATED;
+import static org.serious.dev.enums.OrderStatus.CREATED;
 
 @Service
 @RequiredArgsConstructor

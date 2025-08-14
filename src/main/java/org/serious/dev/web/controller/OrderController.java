@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/orders")
 @RequiredArgsConstructor
 public class OrderController {
 
     private final OrderApplicationService orderApplicationService;
 
-    @PostMapping("/orders")
+    @PostMapping("/create")
     public ResponseEntity<OrderResponseDto> takeOrder(@RequestBody OrderRequestDto request) {
         OrderResponseDto response = orderApplicationService.processOrderCreation(request);
         return ResponseEntity

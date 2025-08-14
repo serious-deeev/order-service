@@ -63,17 +63,9 @@ public class ServiceLogger {
 
     public void logGrpcError(String requestId, String errorMessage) {
         log.error(
-                "[{}] {}",
-                requestId,
-                errorMessage
-        );
-    }
-
-    public void logError(String requestId, String errorMessage, Exception e) {
-        log.error(
                 "[{}] в процессе обработки запроса возникла ошибка: {}",
                 requestId,
-                errorMessage, e
+                errorMessage
         );
     }
 }

@@ -1,4 +1,4 @@
-package org.serious.dev.entity;
+package org.serious.dev.enums;
 
 public enum OrderStatus {
 
